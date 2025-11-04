@@ -1,93 +1,34 @@
 # Politechnika Świętokrzyska w Kielcach
 ## Wydział Zarządzania i Modelowania Komputerowego
-##### Metody Obliczeniowe
-##### Ćwiczenia
+##### Sieci Komputerowe
+##### Laboratorium
 #### Metoda eliminacji Gaussa
 ![](https://tu.kielce.pl/wp-content/uploads/2018/03/logo_psk.jpg)
-Przygotował: 
-Radosław Kulig
-Łukasz Siudak
-Jakub Piskulak
-Natalia Starzyk
-Maciej Krawczyk
-Piotr Łukawski
+Przygotowali: 
+| Imię i Nazwisko     | Nr albumu| 
+| -------------- | ------- |
+| Radosław Kulig | 09375 |
+| Katarzyna Nowakowska | |
+|Data wykonania ćwiczenia | 22.10.2025|
 
 
 Kierunek: Inżynieria Danych
 
 Studia: stacjonarne
 
+*Oświadczam, że:*
+
+*Sprawozdanie niniejsze zostało wykonane przeze mnie osobiście. Zamieszczone w sprawozdaniu wyniki badań zostały uzyskane przeze mnie podczas wykonywania zadań laboratoryjnych.*
+*Radosław Kulig*
+*Katarzyna Nowakowska*
 ***
 
 ## Wstęp teoretyczny
 
-Celem niniejszego sprawozdania jest przedstawienie metody rozwiązywania układów równań liniowych przy użyciu metody eliminacji Gaussa. Metoda ta stanowi jedno z podstawowych narzędzi algebry liuniowej i numerycznej umożliwioające przekształcenie układu równań do postaci trójkątnej, co pozwala na łatwe wyznaczenie niewiadomych za pomocą podstawiania wstecznego.
+Przełączniki (ang. switches) stanowią kluczowy element sieci lokalnych (LAN), odpowiadając za przesyłanie ramek danych pomiędzy urządzeniami końcowymi w obrębie jednej sieci. Ich głównym zadaniem jest efektywne kierowanie ruchem w warstwie drugiej modelu OSI, na podstawie adresów MAC. W przeciwieństwie do koncentratorów (hubów), przełączniki analizują tablicę adresów MAC, co pozwala im na przesyłanie ramek tylko do właściwego odbiorcy, minimalizując kolizje i zwiększając przepustowość sieci.
 
-W sprawozdaniuz zaprezentowano szczegółowy przebieg obliczeń dla układu trzech równań z trzema niewiadomymi. Każdy etap został opisany krok po kroku, z wyszczególnieniem operacji elementarnych wykonywanycg na wierszach macierzy. Celem opracowania jest nie tylko uzyskania poprawnego rozwiązania, ale również zrozumienie idei metody eliminacji Gaussa oraz jej zastosowania w praktycznych problemach obliczeniowych.
+Podstawowa konfiguracja przełącznika obejmuje m.in. nadanie nazwy urządzeniu, ustawienie haseł dostępu, konfigurację interfejsu VLAN 1, przypisanie adresu IP, a także ustawienie banera ostrzegawczego (MOTD). Te czynności są niezbędne, aby zapewnić bezpieczeństwo, ułatwić zarządzanie urządzeniem oraz umożliwić zdalny dostęp administracyjny. Ważnym elementem jest również zapisanie konfiguracji w pamięci NVRAM, aby zachować ustawienia po restarcie urządzenia.
 
+Urządzenia końcowe, takie jak komputery PC, muszą zostać odpowiednio skonfigurowane z adresem IP, maską podsieci i bramą domyślną, aby mogły komunikować się z przełącznikami i innymi hostami w sieci. Poprawność konfiguracji można zweryfikować przy pomocy narzędzia ping, które służy do testowania łączności sieciowej.
 
-### dana macierz
-
-```
- x1 + 2x2 + 3x3 = 1
-2x1 +  x2 + 3x3 = 2
-3x1 + 2x2 +  x3 = 0
-```
-
-### Rozwiązanie
-
-#### Krok 1
-R2 - 2 R1 → R2 (multiply 1 row by 2 and subtract it from 2 row); R3 - 3 R1 → R3 (multiply 1 row by 3 and subtract it from 3 row)
-
-```
-1	2	3	1
-0	-3	-3	0
-0	-4	-8	-3
-```
-#### Krok 2
-R2 / -3 → R2 (divide the 2 row by -3)
-```
-1	2	3	1
-0	1	1	0
-0	-4	-8	-3
-```
-#### Krok 3
-R1 - 2 R2 → R1 (multiply 2 row by 2 and subtract it from 1 row); R3 + 4 R2 → R3 (multiply 2 row by 4 and add it to 3 row)
-```
-1	0	1	1
-0	1	1	0
-0	0	-4	-3
-```
-#### Krok 4
-
-R3 / -4 → R3 (divide the 3 row by -4)
-```
-1	0	1	1
-0	1	1	0
-0	0	1	0.75
-```
-#### Krok 5
-
-R1 - 1 R3 → R1 (multiply 3 row by 1 and subtract it from 1 row); R2 - 1 R3 → R2 (multiply 3 row by 1 and subtract it from 2 row)
-```
-1	0	0	0.25
-0	1	0	-0.75
-0	0	1	0.75
-```
-#### Podstawienie wsteczne
-```
- 0.25 + 2·(-0.75) + 3·0.75 = 0.25 - 1.5 + 2.25 = 1
-2·0.25 + (-0.75) + 3·0.75 = 0.5 - 0.75 + 2.25 = 2
-3·0.25 + 2·(-0.75) + 0.75 = 0.75 - 1.5 + 0.75 = 0
-```
-### Rozwiązanie
-```
-x1 = 0.25
-x2 = -0.75
-x3 = 0.75
-```
-## Wnioski
-
-Przeprowadzone obliczenia potwierdziły skuteczność metody eliminacji Gaussa w rozwiązywaniu układów równań liniowych. Dzięki systematycznemu stosowaniu operacji elementarnych na wierszach macierzy możliwe było sprowadzenie układu do postaci trójkątnej górnej, a anastępnie wyznaczenie wartości niewiadomych poprzez podstawianie wsteczne.
-
-Uzyskane rozwiązanie spełnia wszystkie równania pierwotnego układu, co świadczy o poprawności przeprowadzonych przekształceń. Metoda ta, mimo swojej prostoty, jest podstawą wielu algorytmów obliczeniowych stosowanych w naukach technicznych, fizyce i informatyce,a jej zrozumienie stanowi istotny element wiedzy z zakresu algebry liniowej.
+W ćwiczeniu tym wykorzystano sprzęt Cisco Catalyst 2960 z systemem operacyjnym Cisco IOS. W ramach laboratorium uczestnik poznaje podstawy pracy w trybie CLI (Command Line Interface) urządzeń Cisco oraz utrwala umiejętność konfiguracji i diagnostyki podstawowych połączeń sieciowych.
