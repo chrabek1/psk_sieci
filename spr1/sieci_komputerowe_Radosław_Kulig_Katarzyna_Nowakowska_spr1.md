@@ -119,3 +119,11 @@ Brak odpowiedzi na ping może być spowodowany m.in. przez:
 - błędną konfigurację VLAN (urządzenia w różnych VLAN-ach bez routingu)
 
 - zaporę sieciową (firewall) blokującą odpowiedzi ICMP na komputerze
+
+## Wnioski
+
+W ramach przeprowadzonych ćwiczeń zapoznaliśmy się z podstawowymi zasadami konfiguracji przełączników sieciowych Cisco oraz urządzeń końcowych. Nabyli praktyczne umiejętności w zakresie obsługi interfejsu CLI, konfiguracji adresacji IP, interfejsów VLAN, haseł dostępowych i banerów systemowych.
+
+Przeprowadzone testy łączności (polecenie ping) potwierdziły poprawność konfiguracji oraz prawidłowe działanie połączeń między przełącznikami i komputerami w ramach jednej sieci lokalnej. Ćwiczenie pozwoliło nam również zrozumieć znaczenie stanu portów przełącznika oraz wpływ poprawnej konfiguracji warstwy drugiej modelu OSI na funkcjonowanie sieci.
+
+Podsumowując, laboratorium umożliwiło utrwalenie podstawowych umiejętności administracyjnych niezbędnych do zarządzania infrastrukturą sieciową, a także zrozumienie mechanizmów odpowiedzialnych za przesyłanie danych w sieciach LAN.
