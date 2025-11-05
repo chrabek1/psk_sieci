@@ -5,6 +5,7 @@
 #### Podstawowa konfiguracja przełącznika i urządzenia końcowego
 ![](https://tu.kielce.pl/wp-content/uploads/2018/03/logo_psk.jpg)
 Przygotowali: 
+
 | Imię i Nazwisko     | Nr albumu| 
 | -------------- | ------- |
 | Radosław Kulig | 093795 |
@@ -86,7 +87,8 @@ Ping na PC2
 ## Tabela statusów interfejsów
 Sprawdzenie statusu interfejsów za pomocą komendy `show ip interface brief` mogliśmy wykonać tylko w momencie konfiguracji przekaźników
 ,gdy byliśmy podłączeni z nimi kablami konsolowymi(bez odtworzonej topologii sieci), więc włączony status miały jedynie intefejsy `F0/1` i `VLAN 1`  
-| Interfejs | S1 Status | S1 Protocol | S2 Status | S1 Protocol | 
+
+| Interfejs | S1 Status | S1 Protocol | S2 Status | S2 Protocol | 
 | --------- | --------- | ----------- | --------- | ----------- |
 | F0/1 | up | up | up | up 
 | F0/6 | down | down | down | down |
@@ -94,7 +96,8 @@ Sprawdzenie statusu interfejsów za pomocą komendy `show ip interface brief` mo
 | VLAN 1 | up | up | up | up |
 
 Jednak za pomocą narzędzia dedukcji jesteśmy w stanie przewidzieć że z odtworzoną topologią siecii ta tabela powinna prezentować się następująco: 
-| Interfejs | S1 Status | S1 Protocol | S2 Status | S1 Protocol | 
+
+| Interfejs | S1 Status | S1 Protocol | S2 Status | S2 Protocol | 
 | --------- | --------- | ----------- | --------- | ----------- |
 | F0/1 | up | up | up | up |
 | F0/6 | up | up | down | down |
