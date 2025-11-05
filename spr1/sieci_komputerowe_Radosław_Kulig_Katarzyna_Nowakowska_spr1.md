@@ -35,11 +35,11 @@ W ćwiczeniu tym wykorzystano sprzęt Cisco Catalyst 2960 z systemem operacyjnym
 
 ## Konfiguracja i weryfikacja podstawowych ustawień przełączników
 
-Za pomocą kabla konsolowego łączymy komputery ze swoich stanowisk z przełącznikami.
-![kabel konsolowy](https://github.com/chrabek1/psk_sieci/blob/main/spr1/kabel_konsolowy.jpg?raw=true)
+Za pomocą kabla konsolowego łączymy komputery ze swoich stanowisk z przełącznikami.  
+![kabel konsolowy](https://github.com/chrabek1/psk_sieci/blob/main/spr1/kabel_konsolowy.jpg?raw=true)  
 Po nawiązaniu połączenia konsolowego z przełącznikiem, przechodzimy do trybu konfiguracji globalnej i nadajemy przełącznikom odpowiednie nazwy(S3-Katarzyna Nowakowska ; S4-Radosław Kulig) oraz wprowadzamy lokalne hasła (cisco i class)
 
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr1/kasia/a%20i%20d.jpg?raw=true)
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr1/kasia/a%20i%20d.jpg?raw=true)  
 
 Zaby zapobiec niepożądanym zapytaniom DNS wpisujemy komendę `no ip domain lookup`
 
