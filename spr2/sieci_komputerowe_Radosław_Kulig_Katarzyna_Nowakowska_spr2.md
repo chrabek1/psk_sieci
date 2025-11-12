@@ -2,7 +2,10 @@
 ## Wydział Zarządzania i Modelowania Komputerowego
 ##### Sieci Komputerowe
 ##### Laboratorium
-#### Podstawowa konfiguracja przełącznika i urządzenia końcowego
+#### Badanie modeli TCP/IP i OSI w działaniu.
+#### Wykorzystanie programu Wireshark do badania
+ruchu sieciowego
+####
 ![](https://tu.kielce.pl/wp-content/uploads/2018/03/logo_psk.jpg)
 Przygotowali: 
 
@@ -26,102 +29,24 @@ Data wykonania ćwiczenia: 22.10.2025
 
 ## Wstęp teoretyczny
 
-Przełączniki (ang. switches) stanowią kluczowy element sieci lokalnych (LAN), odpowiadając za przesyłanie ramek danych pomiędzy urządzeniami końcowymi w obrębie jednej sieci. Ich głównym zadaniem jest efektywne kierowanie ruchem w warstwie drugiej modelu OSI, na podstawie adresów MAC. W przeciwieństwie do koncentratorów (hubów), przełączniki analizują tablicę adresów MAC, co pozwala im na przesyłanie ramek tylko do właściwego odbiorcy, minimalizując kolizje i zwiększając przepustowość sieci.
+Podstawą działania współczesnych sieci komputerowych jest poprawna komunikacja pomiędzy urządzeniami, oparta na jasno zdefiniowanych warstwach i protokołach. Każdy element infrastruktury sieciowej – od kabli i kart sieciowych, po przeglądarki internetowe i serwery – pełni określoną funkcję w procesie przesyłania danych. Aby zrozumieć ten proces, konieczne jest poznanie zarówno warstwy fizycznej, jak i zasad funkcjonowania modeli odniesienia OSI oraz TCP/IP, a także narzędzi służących do analizy ruchu sieciowego.
 
-Podstawowa konfiguracja przełącznika obejmuje m.in. nadanie nazwy urządzeniu, ustawienie haseł dostępu, konfigurację interfejsu VLAN 1, przypisanie adresu IP, a także ustawienie banera ostrzegawczego (MOTD). Te czynności są niezbędne, aby zapewnić bezpieczeństwo, ułatwić zarządzanie urządzeniem oraz umożliwić zdalny dostęp administracyjny. Ważnym elementem jest również zapisanie konfiguracji w pamięci NVRAM, aby zachować ustawienia po restarcie urządzenia.
+Model OSI (Open Systems Interconnection) opisuje sposób, w jaki dane są przesyłane od jednego urządzenia do drugiego poprzez siedem warstw, z których każda odpowiada za określony etap komunikacji – od fizycznej transmisji sygnału po aplikacje użytkownika końcowego. Model TCP/IP, będący praktycznym uproszczeniem modelu OSI, składa się z czterech warstw i stanowi podstawę funkcjonowania Internetu. Zrozumienie relacji między tymi modelami pozwala lepiej analizować i diagnozować problemy w sieciach komputerowych.
 
-Urządzenia końcowe, takie jak komputery PC, muszą zostać odpowiednio skonfigurowane z adresem IP, maską podsieci i bramą domyślną, aby mogły komunikować się z przełącznikami i innymi hostami w sieci. Poprawność konfiguracji można zweryfikować przy pomocy narzędzia ping, które służy do testowania łączności sieciowej.
+Warstwa fizyczna, będąca najniższą warstwą modelu OSI, odpowiada za fizyczne połączenie urządzeń i przesyłanie sygnałów elektrycznych, optycznych lub radiowych. W ramach tego etapu konfiguracji użytkownik uczy się rozpoznawać porty, moduły i interfejsy różnych urządzeń sieciowych (takich jak routery, przełączniki czy komputery PC) oraz dobierać odpowiednie typy kabli i połączeń. Poprawne wykonanie tych czynności umożliwia prawidłową wymianę danych pomiędzy hostami w sieci.
 
-W ćwiczeniu tym wykorzystano sprzęt Cisco Catalyst 2960 z systemem operacyjnym Cisco IOS. W ramach laboratorium uczestnik poznaje podstawy pracy w trybie CLI (Command Line Interface) urządzeń Cisco oraz utrwala umiejętność konfiguracji i diagnostyki podstawowych połączeń sieciowych.
+Kiedy urządzenia są już połączone, istotne staje się zrozumienie, jak dane są przesyłane, enkapsulowane i dekapsulowane podczas komunikacji między klientem a serwerem. W tym celu wykorzystuje się program Cisco Packet Tracer, który pozwala obserwować działanie modeli OSI i TCP/IP w trybie symulacji. Dzięki temu można analizować poszczególne warstwy, jednostki danych protokołów (PDU) oraz proces komunikacji, np. podczas żądania strony WWW z wykorzystaniem protokołu HTTP.
 
-## Konfiguracja i weryfikacja podstawowych ustawień przełączników
+Z kolei narzędzie Wireshark umożliwia praktyczną analizę rzeczywistego ruchu sieciowego. Program przechwytuje i interpretuje pakiety przesyłane w sieci, co pozwala użytkownikowi śledzić adresy IP i MAC, zrozumieć strukturę ramek oraz zależności między poszczególnymi warstwami. Dzięki temu można dokładnie zobaczyć, w jaki sposób protokoły – takie jak ICMP, ARP, DNS czy HTTP – funkcjonują w praktyce.
 
-Za pomocą kabla konsolowego łączymy komputery ze swoich stanowisk z przełącznikami.  
-![kabel konsolowy](https://github.com/chrabek1/psk_sieci/blob/main/spr1/kabel_konsolowy.jpg?raw=true)  
-Po nawiązaniu połączenia konsolowego z przełącznikiem, przechodzimy do trybu konfiguracji globalnej i nadajemy przełącznikom odpowiednie nazwy(S3-Katarzyna Nowakowska ; S4-Radosław Kulig) oraz wprowadzamy lokalne hasła (cisco i class)
+## PT 3.5.5
 
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr1/kasia/a%20i%20d.jpg?raw=true)  
-
-Zaby zapobiec niepożądanym zapytaniom DNS wpisujemy komendę `no ip domain lookup`
-
-Skonfigurowaliśmy i włączyliśmy SVI zgodnie z tabelą adresowania oraz wprowadzamy baner logowania MOTD, aby ostrzec o nieautoryzowanym dostępie 
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr1/f.jpeg?raw=true)
-
-Wprowadzoną konfiguracje zostawiamy w pamięci podręcznej przełącznika, nie zapisujemy jej do pamięci NVRAM (zgodnie z poleceniem prowadzącego)
-
-Bieżąca konfiguracja: 
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr1/kasia/h1.jpg?raw=true)  
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr1/kasia/h2.jpg?raw=true)  
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr1/kasia/h3.jpg?raw=true)  
-
-Wersja systemu IOS i inne przedatne informacje i przełączniku:   
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr1/kasia/i.jpg?raw=true)  
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr1/kasia/i2.jpg?raw=true)  
-
-Status podłączonych interfejsów przełącznika:  
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr1/kasia/j.jpg?raw=true)  
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr1/kasia/j2.jpg?raw=true)  
-
-## Konfiguracja komputerów PC
-Konfigurujemy informacje statycznego adresu IP na komputerach PC zgodnie z tabelą adresowania.
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr1/kasia/ip.jpg?raw=true)
-
-## Topologia sieci
-Gdy mamy skonfigurowane zarówno przełączniki jak i komputery PC odtwarzamy topologię sieci.  
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr1/topologia.png?raw=true)  
-Za pomocą kabli ethernet łączymy ze sobą przełączniki, a następni przełączniki łączymy z odpowiednimi komputerami odwzorowując topologie przedstawioną na schemacie.
-![rj45](https://github.com/chrabek1/psk_sieci/blob/main/spr1/rj45.webp?raw=true)
-
-## Pingi
-Z komputera PC1 pingujemy S1
-
-![pingS1](https://github.com/chrabek1/psk_sieci/blob/main/spr1/kasia/pingS1.jpeg?raw=true)  
-Pierwszy pakiet z reguły jest tracony przy pierwszej próbie pingu.  
-Następnie pingujemy S2  
-![pingS2](https://github.com/chrabek1/psk_sieci/blob/main/spr1/kasia/pingS2.jpeg?raw=true)  
-Ping na PC2  
-![pingPC2](https://github.com/chrabek1/psk_sieci/blob/main/spr1/kasia/pingPC2.jpeg?raw=true)  
-
-## Tabela statusów interfejsów
-Sprawdzenie statusu interfejsów za pomocą komendy `show ip interface brief` mogliśmy wykonać tylko w momencie konfiguracji przekaźników
-,gdy byliśmy podłączeni z nimi kablami konsolowymi(bez odtworzonej topologii sieci), więc włączony status miały jedynie intefejsy `F0/1` i `VLAN 1`  
-
-| Interfejs | S1 Status | S1 Protocol | S2 Status | S2 Protocol | 
-| --------- | --------- | ----------- | --------- | ----------- |
-| F0/1 | up | up | up | up 
-| F0/6 | down | down | down | down |
-| F0/18 | down | down | down | down |
-| VLAN 1 | up | up | up | up |
-
-Jednak za pomocą narzędzia dedukcji jesteśmy w stanie przewidzieć że z odtworzoną topologią siecii ta tabela powinna prezentować się następująco: 
-
-| Interfejs | S1 Status | S1 Protocol | S2 Status | S2 Protocol | 
-| --------- | --------- | ----------- | --------- | ----------- |
-| F0/1 | up | up | up | up |
-| F0/6 | up | up | down | down |
-| F0/18 | down | down | up | up |
-| VLAN 1 | up | up | up | up | up |
-
-## Pytanie do przemyślenia  
-**Dlaczego niektóre porty FastEthernet na przełącznikach są włączone, a inne wyłączone?**  
-Porty FastEthernet na przełącznikach są włączone kiedy są do nich podłączone aktywne urządzenia sieciowe. W naszym ćwiczeniu portami F0/1 są połączone ze sobą przełączniki, portem F0/6 jest podłączony PC1 z S1, a portem F0/18 PC2 z S1. Dlatego te porty są włączone, a wszystkie inne nie.  
-  
-**Co może uniemożliwić przesłanie żądania ping pomiędzy komputerami?**  
-Brak odpowiedzi na ping może być spowodowany m.in. przez:
-
-- błędną konfigurację adresów IP lub masek podsieci na komputerach
-
-- brak konfiguracji interfejsu VLAN 1 na przełączniku lub jego wyłączenie
-
-- niepołączone lub uszkodzone kable sieciowe
-
-- porty przełącznika w stanie „administratively down” (wyłączone poleceniem shutdown)
-
-- błędną konfigurację VLAN (urządzenia w różnych VLAN-ach bez routingu)
-
-- zaporę sieciową (firewall) blokującą odpowiedzi ICMP na komputerze
+### Badanie ruchu internetowego HTTP
+W Packet tracerze wchodzimy w tryb symulacji i śledzimy zdarzenia HTTP. Aby mieć co śledzić generujemy ruch HTTP otwierając stronę _www.osi.local_ w przeglądarkę __Web Browser__.   
+![1.2c](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.5.5/1.2c.png?raw=true)  
+Przechodzimy przez 4 kolejne wydarzenia trybu symulacji, które pojawiąją się na liście zdarzeń.
+![]1.2d](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.5.5/1.2d.png?raw=true)  
+Badamy zawartość pakietu HTTP
 
 ## Wnioski
 
