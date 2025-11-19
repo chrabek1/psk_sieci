@@ -63,10 +63,15 @@ Layer 2: Ethernet II Header 0060.47CA. 4DEE >> 0001.96A9.401D
 Klikamy na drugą zakładkę __Outbound PDU Details__  
 ![1.3c](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.5.5/1.3c.png?raw=true)  
 - _Jakie są wspólne informacje wymienione w sekcji IP szczegółów PDU (PDU Details) w porównaniu do informacji wymienionych w zakładce OSI Model?  Z którą warstwą jest ona związana?_  
-Wprowadź swoją odpowiedź tutaj.
+Sa to SRC IP i DST IP związane z warstwą 3.  
 - _Jakie są wspólne informacje wymienione w sekcji TCP szczegółów PDU (PDU Details) w porównaniu do informacji wymienionych w zakładce OSI Model? Z którą warstwą jest to związane?_    
-Wprowadź swoją odpowiedź tutaj.
+Są to Src Post i Dst Port związane z warstwą 4.  
 - _Co to jest Host wymienione w sekcji HTTP PDU Datails ? Z jaką warstwą te informacje byłyby powiązane w ramach zakładki OSI Model?_  
+Jest to nagłówek HTTP określający nazwę hosta/domenę serwera. Z warstwą 7(aplikacji).  
+
+Klikamy następny kolorowy kwadrat w Kolumnie __type__ na liście zdarzeń  
+![1.3e](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.5.5/1.3e.png?raw=true)  
+
 ## Wnioski
 
 W ramach przeprowadzonych ćwiczeń zapoznaliśmy się z podstawowymi zasadami konfiguracji przełączników sieciowych Cisco oraz urządzeń końcowych. Nabyli praktyczne umiejętności w zakresie obsługi interfejsu CLI, konfiguracji adresacji IP, interfejsów VLAN, haseł dostępowych i banerów systemowych.
