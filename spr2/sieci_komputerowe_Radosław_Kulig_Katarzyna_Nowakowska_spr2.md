@@ -204,4 +204,156 @@ Przechwycone i przeanalizowane pakiety ICMP(polecenie ping) potwierdziły popraw
 
 Podsumowując, laboratorium umożliwiło utrwalenie teoretycznej wiedzy na temat modelów sieciowych poprzez ich praktyczną weryfikację. Zyskaliśmy głębokie zrozumienie wewnętrznych mechanizmów odpowiedzialnych za transmisję danych w sieciach IP oraz nabyliśmy podstawowe umiejętności niezbędne do diagnozowania i rozwiązywania problemów sieciowych na podstawie analizy rzeczywistego ruchu pakietów.
 
+***
+## PT 4.7.2
+
+### Określenie właściwości fizycznych urządzeń pracujących w intersieci
+
+W celu indentyfikacji portów zarządzania routera klikamy na niego (East) i przechodziny do zakładki Physical, która powinna być aktywna. Możemy powiększyć i rozszerzyć okno, aby zobaczyć cały router.
+
+- _Które porty zarządzania są dostępne?_
+>Router domyślnie ma dwa porty Gigabit Ethernet plus porty Console/Auxiliary. Dodatkowo, ma sloty na rozszerzenia, dzięki którym można dodać np. porty szeregowe WAN lub dodatkowe porty LAN/przełączające.
+
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/1.1.PNG?raw=true)
+
+
+Identyfikujemy interfejsy LAN I WAN w tym celu klikamy kartę **CLI**, a następnie Enter. 
+
+- _Które interfejsy LAN i WAN są dostępne w routerze East i ile ich jest?_
+	>LAN (GigabitEthernet): Dwa interfejsy: GigabitEthernet0/0 i GigabitEthernet0/1.
+	>WAN (Serial): Dwa interfejsy: Serial0/0/0 i Serial0/0/1.
+
+Jeżeli chcemy uzyskać dostęp do trybu użytkownika musimy wporawdzić polecenie show ip interface brief.
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/1.2b.PNG?raw=true)
+
+- _Ile jest wyświetlonych interfejsów fizycznych?_
+>Wyświetlone są 4 interfejsy fizyczne (GigabitEthernet0/0, GigabitEthernet0/1, Serial0/0/0, Serial0/0/1).
+
+
+Wprowadzamy polecenie **show interface gigabitethernet 0/0**.
+
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/1.2c.PNG?raw=true)
+
+- _Jaka jest domyślna szerokość pasma tego interfejsu?_
+>Domyślna szerokość pasma tego interfejsu wynosi: 1 000 000 Kbit/s (1 Gbps).
+
+
+
+Wprowadzamy polecenie **show interface serial 0/0/0**.
+
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/1.2c2.PNG?raw=true)
+- _Jaka jest domyślna szerokość pasma tego interfejsu?_
+>Domyślna szerokość pasma tego interfejsu (oznaczona jako BW) wynosi: 1544 Kbit/s (1.544 Mbps).
+
+
+Indentyfikujemy złącza modułów rozszerzeń.
+
+- _Ile złączy rozszerzeń jest dostępnych dla dodatkowych modułów na routerze East?_
+>Dwa złącza rozszerzeń.
+
+Następnie klikamy na **Switch2**.
+
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/1.3.PNG?raw=true)
+
+- _Ile złączy rozszerzeń jest dostępne?_
+>Dostępnych jest 6 złączy rozszerzeń.
+
+
+### Wybieranie odpowiednich modułów dla połączeń
+
+Klikamy na East, a następnie kliknij zakładkę **Physical**. Po lewej stronie, pod etykietą Modules, można zobaczyć dostępne opcje rozszerzające możliwości routera. 
+
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/2.1a.PNG?raw=true)
+<img width="611" height="517" alt="image" src="https://github.com/user-attachments/assets/289a4359-6456-468e-a4e6-0958bd502238" />
+<img width="659" height="541" alt="image" src="https://github.com/user-attachments/assets/8f3c445f-21db-4ece-9626-5e148937d48a" />
+<img width="646" height="521" alt="image" src="https://github.com/user-attachments/assets/175010cf-78ab-4bbf-bfd0-1f9d4577b44c" />
+<img width="684" height="557" alt="image" src="https://github.com/user-attachments/assets/e5caa183-af61-4015-8d38-95c362392ca1" />
+<img width="698" height="575" alt="image" src="https://github.com/user-attachments/assets/b928530b-7206-41d5-b2cd-0e20edcff217" />
+<img width="661" height="536" alt="image" src="https://github.com/user-attachments/assets/f6d34d4d-80d9-4eb0-869f-aa9e48d79812" />
+
+
+- _Musisz podłączyć komputery PC1,2 i 3 do routera East, ale nie masz wystarczających środków do zakupu nowego przełącznika. Który moduł można wykorzystać do podłączenia trzech komputerów do routera East?_
+>Należy wykorzystać moduł HWIC-4ESW. Ten moduł jest kartą rozszerzeń z czterema portami przełączającymi, co pozwala na bezpośrednie podłączenie wielu urządzeń końcowych (hostów) do routera, efektywnie zastępując oddzielny przełącznik dla małej grupy urządzeń.
+utaj.
+- _Ile hostów można połączyć z routerem za pomocą tego modułu?_
+>Moduł HWIC-4ESW posiada cztery porty przełączające.
+
+Klikamy **Switch2**.
+
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/2.1b.PNG?raw=true)
+
+- _Który moduł możesz włożyć, aby zapewnić Gigabitowe połączenie optyczne do przełącznika Switch3?_
+>PT-SWITCH-NM-1FGE
+
+Klikamy ponownie East. Musimy spróbować włożyć odpowiedni moduł z kroku 1a. 
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/2.2a.PNG?raw=true)
+
+Zostanie wyświetlony komunikat Cannot add a module when the power is on. Urządzenie musi zostać wyłączone przed dodaniem lub usunięciem modułów, a więc klikamy przycisk zasilania i wyłączamy East. Musimy teraz włożyć odpowiedni moduł z kroku 1a. Po zakończeniu klikamy przycisk zasilania i włączamy East.
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/2.2b.PNG?raw=true)
+
+Korzystając z tej samej procedury wkładamy moduł zidentyfikowany w kroku 1b do pustego gniazda najdalej po prawej stronie Switch2. Następnie używamy polecenia show ip interface brief na Switch2.
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/2.2c.PNG?raw=true)
+
+- _W którym złączu moduł został umieszczony?_
+>GigabitEthernet5/1.
+
+### Łączenie urządzeń
+
+Używamy poniższej tabeli, aby prawidłowo połączyć wszystkie urządzenia. Wybieramy odpowiedni rodzaj kabla, następnie klikamy na pierwsze urządzenie i wybieramy określony interfejs. Klikamy na drugie urządzenie i wybierz określony interfejs. Jeżeli prawidłowo połączyliśmy dwa urządzenia, zobaczysz że wynik się zwiększył.
+<img width="886" height="571" alt="image" src="https://github.com/user-attachments/assets/b4ea0490-0038-4971-a638-6dce50187651" />
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/3.PNG?raw=true)
+
+### Sprawdzanie połączeń
+Sprawdzamy status interfejsu na East. Klikamy zakładkę CLI i wprowadzamy komendę show ip interface brief.
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/4.1a.PNG?raw=true)
+
+Klikamy **Laptop** i wybieramy kartę Config . Wybieramy interfejs **Wireless0** i zaznaczamy pole wyboru On. 
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/4.2a.PNG?raw=true)
+
+Klikamy kartę Desktop na Laptop, a następnie ikonę Web Browser , aby uruchomić przeglądarkę internetową. Wpisujemy  www.cisco.pka w polu URL i kliknij Go.
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/4.2b.PNG?raw=true)
+
+
+Klikamy **TabletPC** i wybierz kartę Config i  interfejs **Wireless0**. Zaznaczamy pole wyboru On. 
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/4.2c.PNG?raw=true)
+
+Powtarzamy kroki opisane w kroku 2b w instrukcji, aby zweryfikować wyświetlanie strony.
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/4.2d.PNG?raw=true)
+
+Teraz zmieniamy metodę dostępu tabletu. Klikamy **TabletPC** i wybierz kartę Config oraz interfejs **Wireless0** . Odznaczamy pole On. Powinno być teraz puste, a połączenie bezprzewodowe utracone.
+Następnie klikamy interfejs 3G/4G Cell1. Zaznaczamy pole wyboru On, w ciągu kilku sekund powinno pojawić się połączenie komórkowe.
+
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/4.3b.PNG?raw=true)
+
+Powtarzamy proces weryfikacji dostępu do Internetu.
+
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/4.3c.PNG?raw=true)
+
+
+Teraz sprawdzamy łączność z innymi komputerami, ponieważ wszystkie komputery powinny mieć łączność ze stroną internetową i ze sobą nawzajem.
+
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/4.4pc2.PNG?raw=true)
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/4.4pingPC7-PC2.PNG?raw=true)
+
+## Wnioski
+W ramach przeprowadzonych ćwiczeń zapoznaliśmy się z podstawowymi zasadami projektowania i implementacji warstwy fizycznej w intersieci symulowanej w programie Cisco Packet Tracer. Nabywaliśmy praktyczne umiejętności w zakresie identyfikacji , rozszerzania oraz prawidłowego okablowania urządzeń sieciowych.
+
+Zidentyfikowaliśmy dostępne porty zarządzania i interfejsy LAN/WAN routera East , a następnie, kierując się koniecznością podłączenia dodatkowych hostów PC1, PC2 i PC3 bez nabywania nowego przełącznika, wybraliśmy i zainstalowaliśmy moduł przełączający HWIC-4ESW. Proces ten wymagał uprzedniego wyłączenia zasilania routera, co jest kluczową procedurą w pracy z modułami nierozszerzalnymi w trybie hot-swap. Analogicznie postąpiliśmy z przełącznikiem Switch2, instalując moduł optyczny PT-SWITCH-NM-1FGE w celu zapewnienia gigabitowego połączenia ze Switch3.
+
+Kolejnym etapem było prawidłowe okablowanie całej topologii. Po nawiązaniu wszystkich połączeń, status interfejsów został zweryfikowany za pomocą poleceń CLI (np. show ip interface brief), a testy łączności (dostęp do strony internetowej i pingi między hostami) potwierdziły pełną funkcjonalność sieci.
+
+Podsumowując, laboratorium umożliwiło nam utrwalenie kluczowych umiejętności w zakresie fizycznej administracji sieciowej, w tym rozszerzania urządzeń, prawidłowego doboru okablowania oraz podstawowej diagnostyki, co jest fundamentalne dla zapewnienia niezawodności i skalowalności infrastruktury sieciowej.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
