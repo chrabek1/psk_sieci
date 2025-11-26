@@ -210,7 +210,13 @@ Adresy IP i MAC trzech stron internetowych dla których wykonaliśmy pingowanie:
 | ------------- |:-------------:|:-------------:|
 |  www.yahoo.com  | 74.6.143.26 | 00:10:db:ff:10:04 |
 |  www.cisco.com | 23.198.224.115 | 00:10:db:ff:10:04 |
-| www.google.com | 142.20.109.147 | 00:10:db:ff:10:04 |
+| www.google.com | 142.20.109.147 | 00:10:db:ff:10:04 |  
+
+_Co jest istotne w tej informacji?_
+>
+_Czym różni się ta informacja od informacji uzyskanej w części 1, dotyczącej używania polecenia ping w
+sieci lokalnej?_
+>
 
 
 ## Wnioski
