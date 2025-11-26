@@ -132,9 +132,9 @@ _Jakie jest przeznaczenie tego zdarzenia, w oparciu o informacje zawarte w ostat
 >Zamknięcie połączenia.
 
 #### Pytania - wyzwawanie
-
 _Na podstawie informacji, która została sprawdzona podczas przechwytywania w Packet Tracer, jaki numer portu ma, nasłuchujący żądań stron WWW serwer (Web Server)?_  
 > Port 80 – jest to standardowy port dla protokołu HTTP.
+
 _Na jakim porcie Web Server nasłuchuje żądania DNS?_
 > Port 53 – jest to standardowy port dla protokołu DNS (zarówno UDP, jak i TCP).
 
