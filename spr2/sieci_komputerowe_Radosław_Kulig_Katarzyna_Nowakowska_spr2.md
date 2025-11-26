@@ -353,7 +353,7 @@ Powtarzamy proces weryfikacji dostępu do Internetu.
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/4.3c.PNG?raw=true)  
 
 
-Teraz sprawdzamy łączność z innymi komputerami, ponieważ wszystkie komputery powinny mieć łączność ze stroną internetową i ze sobą nawzajem.  
+Teraz sprawdzamy łączność z innymi komputerami(uprzednio również je konfigurując), ponieważ wszystkie komputery powinny mieć łączność ze stroną internetową i ze sobą nawzajem.  
 
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/4.4pc2.PNG?raw=true)  
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/4.7.2/4.4pingPC7-PC2.PNG?raw=true)  
