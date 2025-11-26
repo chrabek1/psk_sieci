@@ -213,10 +213,10 @@ Adresy IP i MAC trzech stron internetowych dla których wykonaliśmy pingowanie:
 | www.google.com | 142.20.109.147 | 00:10:db:ff:10:04 |  
 
 _Co jest istotne w tej informacji?_
->
+> Adresy MAC oraz IP oraz typ i struktura pakietu.
 _Czym różni się ta informacja od informacji uzyskanej w części 1, dotyczącej używania polecenia ping w
 sieci lokalnej?_
->
+> Widać szczegółową zawartość pakietu (adresy MAC, typ ramki, wartości pól), czyli pełną strukturę danych przesyłanych w sieci, a nie tylko informację o osiągalności.
 
 
 ## Wnioski
