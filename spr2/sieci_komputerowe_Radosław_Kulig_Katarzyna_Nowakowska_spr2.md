@@ -159,7 +159,7 @@ W tym labolatorium interesują nas tylko PDU typu ICMP, dlatego więc w polu Fil
 ![1.2b.PNG](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/1.2b.PNG)   
 
 Przechodzimy ponownie do wiersza poleceń i pingujemy adres IP drugiego członka zespołu.
-![1.2c](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/1.2c2.PNG?raw=true)  
+![1.2c](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/1.2c.PNG?raw=true)
 
 Kończymy przechwytywanie klikając na Stop Capture.  
 
@@ -216,6 +216,7 @@ Adresy IP i MAC trzech stron internetowych dla których wykonaliśmy pingowanie:
 
 _Co jest istotne w tej informacji?_
 > Adresy MAC oraz IP oraz typ i struktura pakietu.
+
 _Czym różni się ta informacja od informacji uzyskanej w części 1, dotyczącej używania polecenia ping w
 sieci lokalnej?_
 > Widać szczegółową zawartość pakietu (adresy MAC, typ ramki, wartości pól), czyli pełną strukturę danych przesyłanych w sieci, a nie tylko informację o osiągalności.
