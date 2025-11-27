@@ -151,23 +151,25 @@ Dzięki wizualizacji w Packet Tracer możliwe było zrozumienie kierunku przepł
 
 ### Użycie programu Wireshark do przechwycenia i analizy lokalnych danych ICMP
 W wierszu poleceń wpisujemy komendę ipconfig /all w celu zobaczenia adresu IP interfejsu komputera, jego opisu oraza adresu fizycznego(MAC).   
-![spr2/3.7.10/1.1a.PNG](https://github.com/chrabek1/psk_sieci/blob/c129221cc9a12a53fb11a2030def6c8315692feb/spr2/3.7.10/1.1a.PNG)  
+![1.1a](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/1.1a.PNG?raw=true)  
 
-Następnie uruchamiamy program Wireshark i klikamy dwukrotnie żądany interfejs w celu rozpoczęcia przechwytywania pakietów. W tym labolatorium interesują nas tylko PDU typu ICMP, dlatego więc w polu Filter wpisujemy icmp i klikamy Enter.  
+Następnie uruchamiamy program Wireshark i klikamy dwukrotnie żądany interfejs w celu rozpoczęcia przechwytywania pakietów.  
+W tym labolatorium interesują nas tylko PDU typu ICMP, dlatego więc w polu Filter wpisujemy icmp i klikamy Enter.  
+
+![1.2b.PNG](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/1.2b.PNG)   
 
 Przechodzimy ponownie do wiersza poleceń i pingujemy adres IP drugiego członka zespołu.
-![https://github.com/chrabek1/psk_sieci/blob/c129221cc9a12a53fb11a2030def6c8315692feb/spr2/3.7.10/1.2c2.PNG](https://github.com/chrabek1/psk_sieci/blob/c129221cc9a12a53fb11a2030def6c8315692feb/spr2/3.7.10/1.2c2.PNG)  
+![1.2c](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/1.2c2.PNG?raw=true)  
 
 Kończymy przechwytywanie klikając na Stop Capture.  
 
-![https://github.com/chrabek1/psk_sieci/blob/c129221cc9a12a53fb11a2030def6c8315692feb/spr2/3.7.10/1.2c.PNG](https://github.com/chrabek1/psk_sieci/blob/c129221cc9a12a53fb11a2030def6c8315692feb/spr2/3.7.10/1.2c.PNG)  
 
 Analizujemy dane wygenerowane przez żądania ping. Wireshark wyświetla te dane w trzech sekcjach. Górna sekcja wyświetla listę ramek PDU z podsumowaniem informacji o danym pakiecie IP. Druga sekcja wyświetla informacje na temat ramki PDU oraz dzieli ją na bazie poszczególnych warstw protokołów. Trzecia sekcja wyświetla nieprzetworzone dane(w trybie szesnastkowym oraz dziesiętnym) dla poszczególnej warstwy.  
 
-![https://github.com/chrabek1/psk_sieci/blob/c129221cc9a12a53fb11a2030def6c8315692feb/spr2/3.7.10/1.3a.PNG](https://github.com/chrabek1/psk_sieci/blob/c129221cc9a12a53fb11a2030def6c8315692feb/spr2/3.7.10/1.3a.PNG)  
+![1.3a.PNG](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/1.3a.PNG)  
 
 
-![spr2/3.7.10/1.3b.PNG](https://github.com/chrabek1/psk_sieci/blob/c129221cc9a12a53fb11a2030def6c8315692feb/spr2/3.7.10/1.3b.PNG)  
+![1.3b.PNG](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/1.3b.PNG)  
 
 - _Czy źródłowy adres MAC pasuje do interfejsu komputera?_  
   
@@ -186,23 +188,23 @@ Analizujemy dane wygenerowane przez żądania ping. Wireshark wyświetla te dane
 
 Ponownie rozpoczynamy przechwytywanie. Gdy wyświetli się okno komunikatu klikamy Continue without saving. Pinguj następujące trzy adresy URL witryn z wiersza polecenia systemu Windows:  www.yahoo.com, www.cisco.com, www.google.com.
 
-![](https://github.com/chrabek1/psk_sieci/blob/c129221cc9a12a53fb11a2030def6c8315692feb/spr2/3.7.10/2.1c_yahoo.PNG)  
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/2.1c_yahoo.PNG)  
 
-![](https://github.com/chrabek1/psk_sieci/blob/c129221cc9a12a53fb11a2030def6c8315692feb/spr2/3.7.10/2.1c_cisco.PNG)  
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/2.1c_cisco.PNG)  
 
-![](https://github.com/chrabek1/psk_sieci/blob/c129221cc9a12a53fb11a2030def6c8315692feb/spr2/3.7.10/2.1c_google.PNG)  
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/2.1c_google.PNG)  
 
 Zatrzymujemy proces przechwytywania danych klikając ikonę Stop Capture.  
 
 
 Przeglądamy przechwycone dane w programie Wireshark.  
-![](https://github.com/chrabek1/psk_sieci/blob/c129221cc9a12a53fb11a2030def6c8315692feb/spr2/3.7.10/2.2yahoo.PNG)  
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/2.2yahoo.PNG)  
 
 
-![](https://github.com/chrabek1/psk_sieci/blob/c129221cc9a12a53fb11a2030def6c8315692feb/spr2/3.7.10/2.2cisco.PNG)  
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/2.2cisco.PNG)  
 
 
-![](https://github.com/chrabek1/psk_sieci/blob/c129221cc9a12a53fb11a2030def6c8315692feb/spr2/3.7.10/2.2google.PNG)  
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/2.2google.PNG)  
 
 
 Adresy IP i MAC trzech stron internetowych dla których wykonaliśmy pingowanie:
@@ -218,6 +220,10 @@ _Czym różni się ta informacja od informacji uzyskanej w części 1, dotycząc
 sieci lokalnej?_
 > Widać szczegółową zawartość pakietu (adresy MAC, typ ramki, wartości pól), czyli pełną strukturę danych przesyłanych w sieci, a nie tylko informację o osiągalności.
 
+### Pytania do przemyślenia
+_Dlaczego Wireshark pokazuje aktualny adres MAC dla hostów lokalnych, ale już nie pokazuje aktualnego
+MAC dla hostów zdalnych?_  
+> Dla hostów lokalnych Wireshark może odczytać rzeczywisty MAC z ramek warstwy 2 w tej samej sieci, natomiast dla hostów zdalnych pakiety przechodzą przez routery, więc widoczny jest tylko MAC najbliższego routera, a nie faktyczny MAC urządzenia docelowego.
 
 ## Wnioski
 W ramach przeprowadzonych ćwiczeń zapoznaliśmy się z podstawowymi zasadami analizy ruchu sieciowego za pomocą analizatora protokołów Wireshark. Nabyliśmy praktyczne umiejętności w zakresie przechwytywania i filtrowania danych sieciowych, a także szczegółowej inspekcji nagłówków pakietów na różnych warstwach modelu TCP/IP.  
