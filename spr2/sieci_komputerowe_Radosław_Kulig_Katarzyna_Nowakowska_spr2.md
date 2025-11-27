@@ -199,14 +199,13 @@ Zatrzymujemy proces przechwytywania danych klikając ikonę Stop Capture.
  
  
 Przeglądamy przechwycone dane w programie Wireshark.  
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/2.2yahoo.PNG)  
+
+![2.2yahoo](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/2.2yahoo.PNG?raw=true)  
  
+![2.2cisco](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/2.2cisco.PNG?raw=true)  
  
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/2.2cisco.PNG)  
- 
- 
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/2.2google.PNG)  
- 
+![2.2google](https://github.com/chrabek1/psk_sieci/blob/main/spr2/3.7.10/2.2google.PNG?raw=true)  
+
  
 Adresy IP i MAC trzech stron internetowych dla których wykonaliśmy pingowanie:
 | Strona | Adres IP | Adres MAC |
