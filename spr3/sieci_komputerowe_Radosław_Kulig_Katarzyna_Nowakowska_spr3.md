@@ -38,42 +38,52 @@ Celem ćwiczenia laboratoryjnego było zapoznanie się z metodami wyświetlania 
  
 ### Konfigurowanie urządzeń i weryfikacja połączeń. 
 Konfigurujemy addres IPv4 dla komputera PC.  
+
 ![1.2a](https://github.com/chrabek1/psk_sieci/blob/main/spr3/7.2.7/1.2a.PNG?raw=true)  
+
 W wierszu poleceń na komputerze PC-A wykonujemy ping na adres przełącznika.  
+
 ![1.2b](https://github.com/chrabek1/psk_sieci/blob/main/spr3/7.2.7/1.2b.PNG?raw=true)  
+
 _Czy polecenia ping zostały wykonane pomyślnie? Wyjaśnij._   
 > Pingi nie doszły do odbiorcy ponieważ przełącznik nie został jeszcze skonfigurowany.  
  
 Konfigurujemy przełączniki.  
+
 ![1.3](https://github.com/chrabek1/psk_sieci/blob/main/spr3/7.2.7/1.3.PNG?raw=true)   
 
+
 Sprawdzamy połączenie sieciowe, w tym celu pingujemy przełącznik z PC-A.  
+
 ![1.4](https://github.com/chrabek1/psk_sieci/blob/main/spr3/7.2.7/1.4.PNG?raw=true)   
+
 _Czy polecenia ping zostały wykonane pomyślnie? Wyjaśnij._   
 > Tak, pingi dotarły do hosta odbiorcy ponieważ skonfigurowaliśmy już przełącznik.  
 
 ### Analiza adresu MAC karty sieciowej PC-A.  
 Wynik komendy `ipconfig/all`:  
+
 ![2.1a](https://github.com/chrabek1/psk_sieci/blob/main/spr3/7.2.7/2.1a.PNG?raw=true)   
 
 _Jaką postać ma identyfikator OUI dla wskazanego adresu MAC karty sieciowej?_   
 > Adres MAC karty sieciowej to: `00-E0-4C-55-37-D5`. OUI to pierwsze 3 bajty adresu MAC czyli `00-E0-4C`.  
 
 _Jaką postać ma część adresu MAC opisująca numer seryjny urządzenia?_  
->Numer seryjny to ostatnie 3 bajty adresu MAC, czyli `55-37-D5`.  
+> Numer seryjny to ostatnie 3 bajty adresu MAC, czyli `55-37-D5`.  
 
 _Korzystając z powyższego przykładu, odszukaj nazwę producenta, który wyprodukował tą kartę sieciową_  
 > Producent karty sieciowej to Intel(R).
 
 ### Analiza adresu MAC interfejsu S1 F0/6  
 W konsoli przełącznika S1 wpisujemy komendę `show interfaces vlan 1`.  
+
 ![2.2a](https://github.com/chrabek1/psk_sieci/blob/main/spr3/7.2.7/2.2a.PNG?raw=true)   
 
 _Jaki jest adres MAC dla VLAN 1 na S1?_   
 > Adres MAC dla VLAN 1 na S1 to `08:CC:68:34:81:40`.  
 
 _Jaki jest numer seryjny adresu MAC dla VLAN 1?_   
->Numer seryjny to dla VLAN 1 to `34:81:40`.   
+> Numer seryjny to dla VLAN 1 to `34:81:40`.   
 
 _Jaki jest OUI dla VLAN 1?_   
 > OUI dla VLAN1 to `08:CC:68`.   
@@ -88,12 +98,16 @@ _Dlaczego w komunikacie wyjściowym polecenia show widzimy 2 razy ten sam adres 
 > Ten sam adres MAC widoczny jest dwukrotnie, ponieważ interfejs VLAN 1 używa swojego fabrycznego adresu BIA jako aktualnego adresu MAC.  
   
 Wyświetlamy adres MAC używając polecenia `show arp`.  
+
 ![2.2b](https://github.com/chrabek1/psk_sieci/blob/main/spr3/7.2.7/2.2b.PNG?raw=true)    
+
 _Jakie adresy warstwy 2 są wyświetlone na S1?_    
 > Wyświetla się tylko adres przełącznika S1 ponieważ topologia jeszcze nie jest odtworzona.  
 
 Używamy komendy `show mac address-table` aby przejrzeć adresy MAC na przełączniku.  
+
 ![2.3](https://github.com/chrabek1/psk_sieci/blob/main/spr3/7.2.7/2.3.PNG?raw=true)   
+
 _Czy przełącznik wyświetlał adres MAC PC-A? Jeśli odpowiedziałeś "tak" na jakim porcie to było?_   
 > Nie wyświetlał się ponieważ podczas konfiguracji nie mieliśmy odtworzonej topologii. Jednak powinien się on wyświetlać na porcie `F0/6`.    
 
@@ -149,32 +163,58 @@ Wypełniamy tabale adresowania aby móc przeprowadzić testy łączności.
 Wykonujemy po koleji testy zgodnie z tabelą.
 
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/1.1PingPC1-PC2_niedziala.PNG?raw=true)   
+
 Ping PC1 na PC2 nie działa więc, sprawdzamy poprawność adresów IP na tych komputerach. IP PC1 okazuje się nieprawidłowy więc zmieniamy go na zgodny z tabelą adresacji.   
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/1.1zmianaIP_PC1.PNG?raw=true)   
+
 Po zmianie adresu IP PC1  udaje się prawidłowo nawiązać łączność z PC2.  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/1.1PingPC1-PC2_dziala.PNG?raw=true)   
+
 Ping PC1 na S1 również nie działa więc sprawdzamy konfiguracje S1.  
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/S1defaultGateway_brak.PNG?raw=true)  
+
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/S1defaultGateway_brak.PNG?raw=true)   
+
 Okazuje się że S1 nie ma ustawionej bramy domyślnej więc ustawiamy ją zgodnie z tabelą adresacji.  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/S1defaultGateway.PNG?raw=true)  
-Udaje się nawiązać połączenie PC1 do S1  .
+
+Udaje się nawiązać połączenie PC1 do S1.  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/PingPC1-S1.PNG?raw=true)  
+
 Wykonujemy ping PC1 do R1.  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/1.1PingPC1-R1.PNG?raw=true)   
+
 Okazuje się działać od razu poprawnie.  
+
 Wykonujemy ping PC1 do S2. Jako że nie działa sprawdzamy konfiguracje S2 i ustawiamy poprawny adres VLAN 1 zgodnie z tabelą adresacji.  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/vlanS2.PNG?raw=true)  
+
 Po poprawieniu adresu VLAN 1 na przełączniku S2 udaje nam się nawiązać łączność.  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/PingPC1-S2.PNG?raw=true)  
+
 Następnie pingujemy PC3 z PC1.   
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/PingPC1-PC3_dziala.PNG?raw=true)  
+
 Udaje nam się nawiązać łączność.  
 Następnie pingujemy PC4 z PC1.  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/PingPC1-PC4_niedziala.PNG?raw=true)  
+
 Nie udaje nam się nawiązać połaczenia więc sprawdzamy konfiguracje PC4 i zmieniamy bramę domyślną na poprawną zgodnie z tabelą adresacji.  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/1.1zmianaDefaultGatewayPC4.PNG?raw=true)   
+
 Po zmianie bramy domyślnej na PC4 udaje już się pomyślnie nawiązać połączenie.   
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/pingPC1-PC4_dziala.PNG?raw=true)  
+
 Wyeliminowaliśmy wszystkie problemy i udało nam się poprawnie nawiązać wszelkie łączności.  
 
 ### Wnioski
@@ -194,41 +234,63 @@ Poprawne zaprojektowanie i konfiguracja sieci wymaga właściwego doboru połąc
 ### Konfiguracja urządzeń
 #### Konfiguracja PC-A i PC-B
 Adresy IPv4 i IPv6, maski podsieci i bramy domyślne na PC-A i PC-B.  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.1a.PNG?raw=true)    
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.1a_ipv6.PNG?raw=true)  
+
 Pingujemy PC-B z PC-A.  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.1c.PNG?raw=true)  
-_Dlaczego ping sie nie powiódł?_  
->Ten ping nie miał prawa zadziałać, ponieważ nie skonfigurowaliśmy jeszcze routera ani switcha.
 
-#### Konfiguracja routera
-Podłączamy się do routera przewodem konsolowym i dokonujemy konfiguracji.
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.1a-i.PNG?raw=true)  
+_Dlaczego ping sie nie powiódł?_   
+>Ten ping nie miał prawa zadziałać, ponieważ nie skonfigurowaliśmy jeszcze routera ani switcha.  
+
+#### Konfiguracja routera  
+
+Podłączamy się do routera przewodem konsolowym i dokonujemy konfiguracji.  
+
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.1a-i.PNG?raw=true)   
+
 Konfigurujemy i uaktywniamy oba interfejsy na routerze.  
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.2j_s1.PNG?raw=true)  
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4_nie%20dziala/2.2jpc-b.PNG?raw=true)  
-Ustawiamy zegar na routerze.
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.2n.PNG?raw=true)  
-Wykonujemy ping z PC-A na PC-B.  
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.1c.PNG?raw=true)
-_Czy polecenia ping zostały wykonane pomyślnie? Wyjaśnij_
-> Nie ponieważ nie skonfigurowaliśmy jeszcze przełącznika
 
-####Konfiguracja Przełącznika
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.2j_s1.PNG?raw=true)   
+
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4_nie%20dziala/2.2jpc-b.PNG?raw=true)   
+
+Ustawiamy zegar na routerze.  
+
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.2n.PNG?raw=true)  
+
+Wykonujemy ping z PC-A na PC-B.  
+
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.1c.PNG?raw=true)   
+
+_Czy polecenia ping zostały wykonane pomyślnie? Wyjaśnij_  
+> Nie ponieważ nie skonfigurowaliśmy jeszcze przełącznika  
+
+#### Konfiguracja Przełącznika  
 Ustawiamy nazwę hosta, interfejs VLAN 1 i bramę domyślną.  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.3.png?raw=true)
 
 ####Weryfikujemy komunikacje.  
 Ping PC-B z PC-A.  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/ping%20pc-a.PNG?raw=true)  
+
 Ping PC-B z S1.  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.4.png?raw=true)  
+
 Po skonfigurowaniu wszystkiego pingi działają poprawnie.  
 
 ### Wyświetlanie informacji o urządzeniu  
 
 Za pomocą polecenia `show ip route` na routerze wyświetlamy tablice routingu.  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/3.1a.PNG?raw=true)  
+
 
 _Jakie oznaczenie jest użyte w tablicy routingu dla bezpośrednio podłączonych sieci?_  
 > Sieci bezpośrednio podłączone są oznaczone literą C.  
@@ -238,9 +300,12 @@ _Jakie typy interfejsów są skojarzone z trasami oznaczonymi jako C?_
 > Trasy te są powiązane z interfejsami GigabitEthernet: `GigabitEthernet0/1` `GigabitEthernet0/2`  
 
 Za pomocą polecenia `show ipv6 route` wyświetlamy trasy IPv6 na routerze.  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/3.1b.PNG?raw=true)  
 
+
 Poleceniem `show interface g0/1` wyświetlamy informacje o interfejsie `GigabitEthernet0/1`  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/3.2a.PNG?raw=true)  
 _Jaki jest adres MAC (Media Access Control) interfejsu G0/1?_  
 >Adres MAC interfejsu G0/1: b0fa.eb49.5d61  
@@ -252,11 +317,16 @@ Informacje IPv6
 
 Wyświetlamy skróconą liste interfejsów na routerze.  
 Wynik komendy `show ip interface brief`  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/3.3a.PNG?raw=true)  
+
 Wynik komendy `show ipv6 interface brief`  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/3.3b.PNG?raw=true)  
 
+
 Skrócona lista interfejsów na przełączniku:  
+
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/3.3c.png?raw=true)  
 
 _Jeśli interfejs G0/0/1 pokazuje, że jest administracyjnie wyłączony, to jakiego polecenia konfiguracji interfejsu należy użyć, aby go włączyć?_  
