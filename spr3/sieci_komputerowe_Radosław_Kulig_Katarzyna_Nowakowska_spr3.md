@@ -324,7 +324,6 @@ Wynik komendy `show ipv6 interface brief`
 
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/3.3b.PNG?raw=true)  
 
-
 Skrócona lista interfejsów na przełączniku:  
 
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/3.3c.png?raw=true)  
