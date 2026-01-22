@@ -142,9 +142,9 @@ Wypełniamy tabale adresowania aby móc przeprowadzić testy łączności.
 | PC1 do PC2  | Nie                  | Adres IP na PC1      | Zmień adres IP PC1     |  Tak       |
 | PC1 do S1   | Nie                  | Brama domyślna na S1 |Ustawiamy brame domyślną|   Tak      |
 | PC1 do R1   | Tak                  | brak                 |                    |      Tak       |
-| PC1 do S2   | Nie                  | VLAN 1                |Ustawiamy poprawny VLAN|   Tak      |
-| PC1 do PC3  | Tak                  |                  |                    |   Tak         |
-| PC1 do PC4  | Nie                  | Brama domyślna | poprawiamy bramę domyślną | Tak |   
+| PC1 do S2   | Nie                  | VLAN 1               |Ustawiamy poprawny VLAN|   Tak      |
+| PC1 do PC3  | Tak                  | brak                 |                    |   Tak         |
+| PC1 do PC4  | Nie                  | Brama domyślna       | poprawiamy bramę domyślną | Tak |   
 
 Wykonujemy po koleji testy zgodnie z tabelą.
 
