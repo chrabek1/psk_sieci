@@ -274,7 +274,7 @@ Ustawiamy nazwę hosta, interfejs VLAN 1 i bramę domyślną.
 
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.3.png?raw=true)
 
-####Weryfikujemy komunikacje.  
+#### Weryfikujemy komunikacje.  
 Ping PC-B z PC-A.  
 
 ![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/ping%20pc-a.PNG?raw=true)  
