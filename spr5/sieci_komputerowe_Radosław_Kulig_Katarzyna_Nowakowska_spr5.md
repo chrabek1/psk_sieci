@@ -2,9 +2,8 @@
 ## Wydział Zarządzania i Modelowania Komputerowego
 ##### Sieci Komputerowe
 ##### Laboratorium
-#### Odczytywanie adresów MAC urządzeń sieciowych 
-#### Rozwiązywanie problemów z bramą domyślną
-#### Budowanie sieci w oparciu o przełącznik i router
+#### Konfigurowanie dostępu do urządzeń sieciowych za pomocą SSH 
+
 ####
 ![](https://tu.kielce.pl/wp-content/uploads/2018/03/logo_psk.jpg)
 Przygotowali: 
@@ -26,313 +25,58 @@ Data wykonania ćwiczenia: 22.10.2025
 *Radosław Kulig*  
 *Katarzyna Nowakowska*  
 ***
-## Lab 7.2.7 Odczytywanie adresów MAC urządzeń sieciowych 
+## Lab 16.4.7 Odczytywanie adresów MAC urządzeń sieciowych 
 ### Wstęp teoretyczny
  
-Sieci komputerowe umożliwiają wymianę danych pomiędzy urządzeniami poprzez zestaw połączonych ze sobą węzłów komunikacyjnych. Podstawą ich działania jest wielowarstwowy model komunikacji, w którym każda warstwa odpowiada za określone funkcje związane z przesyłaniem informacji. Jedną z kluczowych warstw jest warstwa łącza danych, która odpowiada za komunikację pomiędzy urządzeniami w obrębie tej samej sieci lokalnej.  
-
-W warstwie łącza danych wykorzystywane są adresy MAC (Media Access Control), które jednoznacznie identyfikują interfejsy sieciowe urządzeń. Adresy te są przypisywane sprzętowo i służą do poprawnego dostarczania ramek danych w sieci lokalnej. Znajomość sposobów identyfikowania i odczytywania adresów MAC jest istotna w procesie diagnostyki, konfiguracji oraz zarządzania siecią.  
-
-Celem ćwiczenia laboratoryjnego było zapoznanie się z metodami wyświetlania informacji o interfejsach sieciowych oraz adresach MAC przy użyciu narzędzi systemowych. W trakcie laboratorium przeanalizowano konfigurację kart sieciowych oraz rolę adresów MAC w komunikacji sieciowej.  
+Zdalne zarządzanie urządzeniami sieciowymi jest kluczowym elementem administracji sieci komputerowych. W przeszłości powszechnie stosowany protokół Telnet umożliwiał zdalny dostęp do routerów i przełączników, jednak nie zapewniał on szyfrowania przesyłanych danych, co narażało hasła oraz konfigurację urządzeń na przechwycenie. Rozwiązaniem tego problemu jest protokół Secure Shell (SSH), który umożliwia bezpieczne zestawienie połączenia dzięki szyfrowaniu transmisji oraz mechanizmom uwierzytelniania użytkownika i urządzenia. W ramach ćwiczenia skonfigurowano podstawowe parametry routera i przełącznika Cisco oraz uruchomiono usługę SSH, co pozwoliło na bezpieczny zdalny dostęp do urządzeń sieciowych w lokalnej sieci IP.  
 
  
-### Konfigurowanie urządzeń i weryfikacja połączeń. 
-Konfigurujemy addres IPv4 dla komputera PC.  
+### Konfiguracja routera  
+Ustalamy hasła, baner i konfigurujemy interface G0/1 routera.  
 
-![1.2a](https://github.com/chrabek1/psk_sieci/blob/main/spr3/7.2.7/1.2a.PNG?raw=true)  
+![1.3](https://github.com/chrabek1/psk_sieci/blob/main/spr5/1.3.PNG?raw=true)  
 
-W wierszu poleceń na komputerze PC-A wykonujemy ping na adres przełącznika.  
+### Konfiguracja PC-A.  
 
-![1.2b](https://github.com/chrabek1/psk_sieci/blob/main/spr3/7.2.7/1.2b.PNG?raw=true)  
+![1.4](https://github.com/chrabek1/psk_sieci/blob/main/spr5/1.4.PNG?raw=true)  
 
-_Czy polecenia ping zostały wykonane pomyślnie? Wyjaśnij._   
-> Pingi nie doszły do odbiorcy ponieważ przełącznik nie został jeszcze skonfigurowany.  
+Sprawdzamy połączenie sieci.  
+
+![1.5](https://github.com/chrabek1/psk_sieci/blob/main/spr5/1.5.PNG?raw=true)   
+
+Ping nie powiódł się ponieważ przełącznik nie jest jeszcze skonfigurowany ani topologia nie jest odwzorowana.  
  
-Konfigurujemy przełączniki.  
+Konfigurujemy dostęp do routera przez SSH.  
+Ustalamy nazwę urządzenia, domenę, generujemy klucz szyfrowania oraz nazwę i hasło użytkownika. Włączamy Telnet oraz SSH na liniach wejściowych VTY.  
 
-![1.3](https://github.com/chrabek1/psk_sieci/blob/main/spr3/7.2.7/1.3.PNG?raw=true)   
+![2.1-4](https://github.com/chrabek1/psk_sieci/blob/main/spr5/2.1-4.PNG?raw=true)  
 
+Nie jesteśmy jeszcze w stanie ustanowić połączenia SSH do routera ponieważ przechodzi ono przez nieskonfigurowany jeszcze przełącznik.  
 
-Sprawdzamy połączenie sieciowe, w tym celu pingujemy przełącznik z PC-A.  
+### Konfiguracja przełącznika   
 
-![1.4](https://github.com/chrabek1/psk_sieci/blob/main/spr3/7.2.7/1.4.PNG?raw=true)   
+Konfigurujemy podstawowe ustawienia przełącznika.  
 
-_Czy polecenia ping zostały wykonane pomyślnie? Wyjaśnij._   
-> Tak, pingi dotarły do hosta odbiorcy ponieważ skonfigurowaliśmy już przełącznik.  
+![3.1](https://github.com/chrabek1/psk_sieci/blob/main/spr5/3.1.PNG?raw=true)  
 
-### Analiza adresu MAC karty sieciowej PC-A.  
-Wynik komendy `ipconfig/all`:  
+Konfigurujemy przełącznik dla połączeń poprzez SSH.  
 
-![2.1a](https://github.com/chrabek1/psk_sieci/blob/main/spr3/7.2.7/2.1a.PNG?raw=true)   
+![3.2](https://github.com/chrabek1/psk_sieci/blob/main/spr5/3.2.PNG?raw=true)  
 
-_Jaką postać ma identyfikator OUI dla wskazanego adresu MAC karty sieciowej?_   
-> Adres MAC karty sieciowej to: `00-E0-4C-55-37-D5`. OUI to pierwsze 3 bajty adresu MAC czyli `00-E0-4C`.  
+Ustawiamy połączenie SSH do przełącznika.  
 
-_Jaką postać ma część adresu MAC opisująca numer seryjny urządzenia?_  
-> Numer seryjny to ostatnie 3 bajty adresu MAC, czyli `55-37-D5`.  
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr5/3.3.PNG?raw=true)  
 
-_Korzystając z powyższego przykładu, odszukaj nazwę producenta, który wyprodukował tą kartę sieciową_  
-> Producent karty sieciowej to Intel(R).
+Udało się ustanowić sesję SSH.  
 
-### Analiza adresu MAC interfejsu S1 F0/6  
-W konsoli przełącznika S1 wpisujemy komendę `show interfaces vlan 1`.  
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr5/3.3dziala.PNG?raw=true)  
 
-![2.2a](https://github.com/chrabek1/psk_sieci/blob/main/spr3/7.2.7/2.2a.PNG?raw=true)   
+### Uruchamianie SSH z linii poleceń CLI w przełączniku  
+Wyświetlamy opcje parametrów polecenia ssh i łączymy się przez SSH z R1.  
+Przełączamy się między S1 a R1 bez zamykania sesji SSH za pomocą kombinacji klawiszy _Crtl+Shift+6_.  
 
-_Jaki jest adres MAC dla VLAN 1 na S1?_   
-> Adres MAC dla VLAN 1 na S1 to `08:CC:68:34:81:40`.  
-
-_Jaki jest numer seryjny adresu MAC dla VLAN 1?_   
-> Numer seryjny to dla VLAN 1 to `34:81:40`.   
-
-_Jaki jest OUI dla VLAN 1?_   
-> OUI dla VLAN1 to `08:CC:68`.   
-
-_Na podstawie tego OUI, odpowiedz, jaka jest nazwa producenta?_   
-> Ten numer OUI należy do Cisco Systems, Inc.   
-
-_Co oznacza adres bia?_   
-> Adres bia to oryginalny adres MAC karty sieciowej nadany przez producenta.   
-
-_Dlaczego w komunikacie wyjściowym polecenia show widzimy 2 razy ten sam adres MAC?   
-> Ten sam adres MAC widoczny jest dwukrotnie, ponieważ interfejs VLAN 1 używa swojego fabrycznego adresu BIA jako aktualnego adresu MAC.  
-  
-Wyświetlamy adres MAC używając polecenia `show arp`.  
-
-![2.2b](https://github.com/chrabek1/psk_sieci/blob/main/spr3/7.2.7/2.2b.PNG?raw=true)    
-
-_Jakie adresy warstwy 2 są wyświetlone na S1?_    
-> Wyświetla się tylko adres przełącznika S1 ponieważ topologia jeszcze nie jest odtworzona.  
-
-Używamy komendy `show mac address-table` aby przejrzeć adresy MAC na przełączniku.  
-
-![2.3](https://github.com/chrabek1/psk_sieci/blob/main/spr3/7.2.7/2.3.PNG?raw=true)   
-
-_Czy przełącznik wyświetlał adres MAC PC-A? Jeśli odpowiedziałeś "tak" na jakim porcie to było?_   
-> Nie wyświetlał się ponieważ podczas konfiguracji nie mieliśmy odtworzonej topologii. Jednak powinien się on wyświetlać na porcie `F0/6`.    
-
-### Pytania do przemyślenia
-_Czy transmisja rozgłoszeniowa może wystąpić na poziomie warstwy 2? Jeśli tak, to jaki byłby adres MAC?_  
-> W warstwie drugiej sieci Ethernet możliwe jest wysyłanie ramek do wszystkich urządzeń w danej sieci lokalnej (w obrębie jednego segmentu lub VLAN-u). Adres MAC używany w transmisji rozgłoszeniowej: `FF:FF:FF:FF:FF:FF`. Jest to adres MAC rozgłoszeniowy, który powoduje, że ramka zostaje odebrana przez wszystkie urządzenia w danym segmencie sieci.
- 
-_Do czego potrzebna jest znajomość adresu MAC urządzenia?_
-> Adres MAC służy do jednoznacznej identyfikacji interfejsu sieciowego w sieci lokalnej. Jest on wykorzystywany do poprawnego dostarczania ramek Ethernet pomiędzy urządzeniami w obrębie tej samej sieci.
+![](https://github.com/chrabek1/psk_sieci/blob/main/spr5/4cale.PNG?raw=true)  
  
 ### Wnioski
  
-Podczas realizacji ćwiczenia laboratoryjnego zapoznano się z podstawowymi zagadnieniami dotyczącymi warstwy łącza danych oraz rolą adresów MAC w sieciach lokalnych. Wykorzystując narzędzia diagnostyczne, takie jak ipconfig, show interfaces, show arp oraz show mac address-table, możliwe było przeanalizowanie sposobu identyfikacji urządzeń sieciowych oraz powiązania adresów IP z adresami MAC. Przeprowadzone testy łączności wykazały, że poprawna konfiguracja urządzeń jest niezbędna do prawidłowego działania komunikacji sieciowej.  
-
-Ćwiczenie pozwoliło również zrozumieć budowę adresu MAC, w tym znaczenie identyfikatora OUI oraz części unikatowej, a także rolę adresu BIA. Dodatkowo potwierdzono możliwość występowania transmisji rozgłoszeniowej w warstwie drugiej oraz znaczenie adresu MAC rozgłoszeniowego. Zdobyta wiedza stanowi podstawę do dalszej nauki zagadnień związanych z funkcjonowaniem przełączników, diagnostyką sieci oraz analizą ruchu w sieciach komputerowych.  
- 
-***
-## PT 10.3.5 Rozwiązywanie problemów z bramą domyślną
-### Wstęp teoretyczny  
-Brama domyślna (ang. default gateway) jest elementem konfiguracji sieciowej, który umożliwia urządzeniom końcowym komunikację z hostami znajdującymi się poza ich siecią lokalną. Jest to adres interfejsu routera, do którego wysyłane są pakiety przeznaczone do innych sieci, gdy nie istnieje bardziej szczegółowa trasa w tablicy routingu hosta.  
-
-Poprawna konfiguracja bramy domyślnej ma kluczowe znaczenie dla prawidłowego działania komunikacji między sieciami. Błędny adres bramy lub jego brak skutkuje niemożnością nawiązania połączenia z urządzeniami znajdującymi się poza lokalnym segmentem sieci. Celem ćwiczenia laboratoryjnego jest zdiagnozowanie i usunięcie problemów związanych z konfiguracją bramy domyślnej przy użyciu narzędzi diagnostycznych oraz symulatora Packet Tracer.  
-
-### Rozwiązywanie problemów z bramą domyślną
-
-Wypełniamy tabale adresowania aby móc przeprowadzić testy łączności.  
-
-#### Tabela adresowania  
-
-| Urządzenie | Interfejs        | Adres IP        | Maska podsieci     | Brama domyślna |
-|-----------|------------------|-----------------|--------------------|---------------|
-| R1        | G0/0             | 192.168.10.1    | 255.255.255.0      | nd.           |
-| R1        | G0/1             | 192.168.11.1    | 255.255.255.0      | nd.           |
-| S1        | VLAN 1           | 192.168.10.2    | 255.255.255.0      | 192.168.10.1  |
-| S2        | VLAN 1           | 192.168.11.2    | 255.255.255.0      | 192.168.11.1  |
-| PC1       | karta sieciowa   | 192.168.10.10   | 255.255.255.0      | 192.168.10.1  |
-| PC2       | karta sieciowa   | 192.168.10.11   | 255.255.255.0      | 192.168.10.1  |
-| PC3       | karta sieciowa   | 192.168.11.10   | 255.255.255.0      | 192.168.11.1  |
-| PC4       | karta sieciowa   | 192.168.11.11   | 255.255.255.0      | 192.168.11.1  |
-
-
-#### Tabela testów połączeń
-
-| Test        | Zakończony pomyślnie? | Problemy            | Rozwiązanie            | Sprawdzony |
-|-------------|----------------------|----------------------|------------------------|------------|
-| PC1 do PC2  | Nie                  | Adres IP na PC1      | Zmień adres IP PC1     |  Tak       |
-| PC1 do S1   | Nie                  | Brama domyślna na S1 |Ustawiamy brame domyślną|   Tak      |
-| PC1 do R1   | Tak                  | brak                 |                    |      Tak       |
-| PC1 do S2   | Nie                  | VLAN 1               |Ustawiamy poprawny VLAN|   Tak      |
-| PC1 do PC3  | Tak                  | brak                 |                    |   Tak         |
-| PC1 do PC4  | Nie                  | Brama domyślna       | poprawiamy bramę domyślną | Tak |   
-
-Wykonujemy po koleji testy zgodnie z tabelą.
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/1.1PingPC1-PC2_niedziala.PNG?raw=true)   
-
-Ping PC1 na PC2 nie działa więc, sprawdzamy poprawność adresów IP na tych komputerach. IP PC1 okazuje się nieprawidłowy więc zmieniamy go na zgodny z tabelą adresacji.   
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/1.1zmianaIP_PC1.PNG?raw=true)   
-
-Po zmianie adresu IP PC1  udaje się prawidłowo nawiązać łączność z PC2.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/1.1PingPC1-PC2_dziala.PNG?raw=true)   
-
-Ping PC1 na S1 również nie działa więc sprawdzamy konfiguracje S1.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/S1defaultGateway_brak.PNG?raw=true)   
-
-Okazuje się że S1 nie ma ustawionej bramy domyślnej więc ustawiamy ją zgodnie z tabelą adresacji.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/S1defaultGateway.PNG?raw=true)  
-
-Udaje się nawiązać połączenie PC1 do S1.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/PingPC1-S1.PNG?raw=true)  
-
-Wykonujemy ping PC1 do R1.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/1.1PingPC1-R1.PNG?raw=true)   
-
-Okazuje się działać od razu poprawnie.  
-
-Wykonujemy ping PC1 do S2. Jako że nie działa sprawdzamy konfiguracje S2 i ustawiamy poprawny adres VLAN 1 zgodnie z tabelą adresacji.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/vlanS2.PNG?raw=true)  
-
-Po poprawieniu adresu VLAN 1 na przełączniku S2 udaje nam się nawiązać łączność.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/PingPC1-S2.PNG?raw=true)  
-
-Następnie pingujemy PC3 z PC1.   
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/PingPC1-PC3_dziala.PNG?raw=true)  
-
-Udaje nam się nawiązać łączność.  
-Następnie pingujemy PC4 z PC1.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/PingPC1-PC4_niedziala.PNG?raw=true)  
-
-Nie udaje nam się nawiązać połaczenia więc sprawdzamy konfiguracje PC4 i zmieniamy bramę domyślną na poprawną zgodnie z tabelą adresacji.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/1.1zmianaDefaultGatewayPC4.PNG?raw=true)   
-
-Po zmianie bramy domyślnej na PC4 udaje już się pomyślnie nawiązać połączenie.   
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.3.5/pingPC1-PC4_dziala.PNG?raw=true)  
-
-Wyeliminowaliśmy wszystkie problemy i udało nam się poprawnie nawiązać wszelkie łączności.  
-
-### Wnioski
-
-Podczas realizacji ćwiczenia laboratoryjnego udało się skutecznie zdiagnozować oraz usunąć wszystkie problemy związane z błędną konfiguracją adresów IP, bram domyślnych oraz interfejsów VLAN. Kolejne testy łączności pozwoliły na identyfikację przyczyn braku komunikacji pomiędzy urządzeniami oraz potwierdziły poprawność wprowadzanych zmian konfiguracyjnych.
-
-Po wprowadzeniu prawidłowych ustawień zgodnych z tabelą adresowania wszystkie urządzenia sieciowe nawiązały poprawną łączność. Ćwiczenie potwierdziło, że poprawna konfiguracja bramy domyślnej jest kluczowa dla komunikacji między różnymi sieciami oraz stanowi istotny element procesu diagnozowania i rozwiązywania problemów sieciowych.
-
-## Lab 10.4.4 Budowanie sieci w oparciu o przełącznik i router
-
-### Wstęp teoretyczny
-
-Sieć komputerowa składa się z urządzeń końcowych oraz urządzeń pośredniczących, takich jak przełączniki i routery, które umożliwiają wymianę danych pomiędzy hostami. Przełączniki działające w warstwie drugiej modelu OSI odpowiadają za komunikację w obrębie jednej sieci lokalnej, natomiast routery, pracujące w warstwie trzeciej, umożliwiają łączenie różnych sieci oraz przesyłanie pakietów pomiędzy nimi.
-
-Poprawne zaprojektowanie i konfiguracja sieci wymaga właściwego doboru połączeń fizycznych, adresacji IP oraz konfiguracji interfejsów sieciowych. Celem ćwiczenia laboratoryjnego było zbudowanie sieci opartej na przełącznikach i routerze oraz sprawdzenie poprawności jej działania poprzez weryfikację łączności pomiędzy poszczególnymi urządzeniami.
-
-### Konfiguracja urządzeń
-#### Konfiguracja PC-A i PC-B
-Adresy IPv4 i IPv6, maski podsieci i bramy domyślne na PC-A i PC-B.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.1a.PNG?raw=true)    
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.1a_ipv6.PNG?raw=true)  
-
-Pingujemy PC-B z PC-A.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.1c.PNG?raw=true)  
-
-_Dlaczego ping sie nie powiódł?_   
->Ten ping nie miał prawa zadziałać, ponieważ nie skonfigurowaliśmy jeszcze routera ani switcha.  
-
-#### Konfiguracja routera  
-
-Podłączamy się do routera przewodem konsolowym i dokonujemy konfiguracji.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.1a-i.PNG?raw=true)   
-
-Konfigurujemy i uaktywniamy oba interfejsy na routerze.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.2j_s1.PNG?raw=true)   
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4_nie%20dziala/2.2jpc-b.PNG?raw=true)   
-
-Ustawiamy zegar na routerze.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.2n.PNG?raw=true)  
-
-Wykonujemy ping z PC-A na PC-B.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.1c.PNG?raw=true)   
-
-_Czy polecenia ping zostały wykonane pomyślnie? Wyjaśnij_  
-> Nie ponieważ nie skonfigurowaliśmy jeszcze przełącznika  
-
-#### Konfiguracja Przełącznika  
-Ustawiamy nazwę hosta, interfejs VLAN 1 i bramę domyślną.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.3.png?raw=true)
-
-#### Weryfikujemy komunikacje.  
-Ping PC-B z PC-A.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/ping%20pc-a.PNG?raw=true)  
-
-Ping PC-B z S1.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/2.4.png?raw=true)  
-
-Po skonfigurowaniu wszystkiego pingi działają poprawnie.  
-
-### Wyświetlanie informacji o urządzeniu  
-
-Za pomocą polecenia `show ip route` na routerze wyświetlamy tablice routingu.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/3.1a.PNG?raw=true)  
-
-
-_Jakie oznaczenie jest użyte w tablicy routingu dla bezpośrednio podłączonych sieci?_  
-> Sieci bezpośrednio podłączone są oznaczone literą C.  
-_Ile tras w tablicy routingu jest oznaczonych jako C?_   
->W tablicy routingu znajdują się dwie trasy typu C: `192.168.0.0/24` `192.168.1.0/24`.  
-_Jakie typy interfejsów są skojarzone z trasami oznaczonymi jako C?_   
-> Trasy te są powiązane z interfejsami GigabitEthernet: `GigabitEthernet0/1` `GigabitEthernet0/2`  
-
-Za pomocą polecenia `show ipv6 route` wyświetlamy trasy IPv6 na routerze.  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/3.1b.PNG?raw=true)  
-
-
-Poleceniem `show interface g0/1` wyświetlamy informacje o interfejsie `GigabitEthernet0/1`  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/3.2a.PNG?raw=true)  
-_Jaki jest adres MAC (Media Access Control) interfejsu G0/1?_  
->Adres MAC interfejsu G0/1: b0fa.eb49.5d61  
-_Jaki jest adres internetowy wyświetlany w tym poleceniu?_  
->Adres IP interfejsu: 192.168.0.1/24  
-
-Informacje IPv6  
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/3.2b.PNG?raw=true)  
-
-Wyświetlamy skróconą liste interfejsów na routerze.  
-Wynik komendy `show ip interface brief`  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/3.3a.PNG?raw=true)  
-
-Wynik komendy `show ipv6 interface brief`  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/3.3b.PNG?raw=true)  
-
-Skrócona lista interfejsów na przełączniku:  
-
-![](https://github.com/chrabek1/psk_sieci/blob/main/spr3/10.4.4/3.3c.png?raw=true)  
-
-_Jeśli interfejs G0/0/1 pokazuje, że jest administracyjnie wyłączony, to jakiego polecenia konfiguracji interfejsu należy użyć, aby go włączyć?_  
-> Aby włączyć interfejs administracyjnie wyłączony, należy w trybie konfiguracji interfejsu użyć polecenia no shutdown.
-
-### Wnioski
-
-W trakcie tego ćwiczenia udało się poprawnie zbudować oraz skonfigurować sieć składającą się z komputerów, przełącznika oraz routera. Kolejne etapy konfiguracji, obejmujące ustawienie adresów IP, aktywację interfejsów oraz konfigurację urządzeń sieciowych, pozwoliły na stopniowe uruchomienie komunikacji pomiędzy wszystkimi hostami w sieci.  
-
-Weryfikacja działania sieci przy użyciu poleceń diagnostycznych potwierdziła poprawność konfiguracji zarówno dla protokołu IPv4, jak i IPv6. Analiza tablic routingu oraz informacji o interfejsach umożliwiła lepsze zrozumienie sposobu działania routera i przełącznika. Ćwiczenie pozwoliło na praktyczne utrwalenie wiedzy z zakresu budowy, konfiguracji i weryfikacji działania sieci komputerowych.  
+Podczas realizacji ćwiczenia zapoznano się z zasadami bezpiecznego zdalnego zarządzania urządzeniami sieciowymi z wykorzystaniem protokołu SSH. Przeprowadzona konfiguracja routera oraz przełącznika Cisco pozwoliła na zrozumienie znaczenia poprawnych ustawień podstawowych, takich jak adresacja IP, hasła dostępu, banery informacyjne oraz konfiguracja linii VTY. Wykazano, że brak pełnej konfiguracji wszystkich elementów topologii uniemożliwia poprawną komunikację w sieci, co potwierdziły początkowe nieudane próby połączeń. Po prawidłowym skonfigurowaniu przełącznika możliwe było ustanowienie bezpiecznej sesji SSH zarówno z komputera PC, jak i bezpośrednio z poziomu CLI przełącznika. Ćwiczenie potwierdziło przewagę protokołu SSH nad Telnetem w kontekście bezpieczeństwa transmisji oraz podkreśliło jego kluczową rolę w administracji nowoczesnych sieci komputerowych.  
